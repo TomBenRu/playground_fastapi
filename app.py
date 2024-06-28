@@ -28,8 +28,9 @@ async def login(request: Request, username: str = Form(...), password: str = For
     if username in users_db and users_db[username] == password:
         return RedirectResponse("/index/", status_code=302)
     else:
-        return templates.TemplateResponse("login_form.html", {"request": request,
-                                                              "error": "Login fehlgeschlagen. Username oder Password unkorrekt."})
+        return templates.TemplateResponse("login_form.html",
+                                          {"request": request,
+                                           "error": "Login fehlgeschlagen. Username oder Password unkorrekt."})
 
 
 @app.get("/login/", response_class=HTMLResponse)
