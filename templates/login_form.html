@@ -1,4 +1,4 @@
-<div id="general-form" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div id="general-form" hx-swap-oob="true" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <form hx-post="{{ url_for('login') }}" hx-target="#general-form" hx-swap="outerHTML">
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
