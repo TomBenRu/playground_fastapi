@@ -30,7 +30,7 @@ async def login(request: Request, username: str = Form(...), password: str = For
     if username in users_db and users_db[username] == password:
         return RedirectResponse("/index/", status_code=302)
     else:
-        return templates.TemplateResponse("login_form.html",
+        return templates.TemplateResponse("login_form_with_prompt.html",
                                           {"request": request,
                                            "error": "Login fehlgeschlagen. Username oder Password unkorrekt."})
 
