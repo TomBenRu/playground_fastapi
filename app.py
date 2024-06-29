@@ -35,16 +35,21 @@ async def login(request: Request, username: str = Form(...), password: str = For
 
 @app.get("/login/", response_class=HTMLResponse)
 async def login(request: Request):
+    if request.headers.get("HX-Request"):
+        return templates.TemplateResponse("login_form_with_prompt.html", {"request": request})
     return templates.TemplateResponse("login_form.html", {"request": request})
 
 
 @app.get("/forgot-password/", response_class=HTMLResponse)
 async def forgot_password(request: Request):
+    print('in forgot password', flush=True)
     return templates.TemplateResponse("forgot_password_form.html", {"request": request})
 
 
 @app.post("/new-password/", response_class=HTMLResponse)
 async def new_password(request: Request, email: str = Form(...)):
+    print('in new password', flush=True)
+    print(email, flush=True)
     # Hier könnte der Code stehen, um eine E-Mail mit einem neuen Passwort zu senden
     # Da dies nur ein Beispiel ist, geben wir eine Erfolgsmeldung zurück
     return templates.TemplateResponse("forgot_password_success.html", {"request": request})
